@@ -9,3 +9,7 @@ library(taucharts)
 tauchart(df) %>%
   tau_line("distance", "heartRate") %>%
   tau_trendline()
+
+tauchart(df) %>%
+  tau_line("distance", "speed.kmh") %>%
+  tau_trendline()
