@@ -13,10 +13,13 @@ df <- df %>%
          date = as.Date("2015-08-08"),
          type = "run")
 
-## calculate real speed
+## calculate line distance
 
 line_distance <- data.frame(diff(as.matrix(df$distance)))
 names(line_distance) <- "line.dist"
 line_distance <- bind_rows(data.frame(line.dist = 0), line_distance)
 df <- bind_cols(df, line_distance)
-df$speed.ms <- df$line.dist / df$speed
+rm(line_distance)
+
+## calculate real speed in km/h
+df$speed.kmh <- df$speed * 3.6
